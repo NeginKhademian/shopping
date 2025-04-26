@@ -14,7 +14,8 @@ export const fetchProducts = async (
   searchQuery: string = ''
 ): Promise<Product[]> => {
   try {
-    const response = await axios.get('http://localhost:3000/api/products', {
+    const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000/api';
+    const response = await axios.get(`${baseURL}/products`, {
       params: {
         page,
         limit,
